@@ -33,5 +33,14 @@
        		<mvc:mapping path="/admission-form"/>
        		<bean class="com.gontu.mvc.interceptor.DayOfWeekBasedAccessInterceptor" />
        	</mvc:interceptor>
+       	<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+       		<property name="paramName" value="siteLanguage"></property>
+       	</bean>
        </mvc:interceptors>
+       
+       <bean name = "localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" >
+       		<property name="defaultLocale" value="fr" />
+       		<property name="cookieName" value="localeCookie" />
+       		<property name="cookieMaxAge" value="3600"></property>
+       </bean>
 </beans>

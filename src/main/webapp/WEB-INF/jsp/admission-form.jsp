@@ -1,29 +1,32 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <body>
+<a href="admission-form?siteLanguage=en" >English</a> | 
+<a href="admission-form?siteLanguage=fr" >French</a>
 <h3>${headerMessage}</h3>
-<h3>Student Admission Form for Engineering Courses</h3>
+<h3><spring:message code="label.admissionMessage"/></h3>
 <form:errors path="studentObj.*"/>
 <form action="submit-admission-form" method="post">
 <table>
 	<tr>
-		<td>Student's Name:</td>
+		<td><spring:message code="label.studentName"/></td>
 		<td><input type="text" name="studentName"></td>
 	</tr>
 	<tr>
-		<td>Student's Hobby:</td>
+		<td><spring:message code="label.studentHobby"/></td>
 		<td><input type="text" name="studentHobby"></td>
 	</tr>	
 	<tr>
-		<td>Student's Mobile:</td>
+		<td><spring:message code="label.studentMobile"/></td>
 		<td><input type="text" name="studentMobile"></td>
 	</tr>
 	<tr>
-		<td>Student's DOB:</td>
+		<td><spring:message code="label.studentDOB"/></td>
 		<td><input type="text" name="studentDOB"></td>
 	</tr>
 	<tr>
-		<td>Student's Skill Set:</td>
+		<td><spring:message code="label.studentSkills"/></td>
 		<td><select name="studentSkills" multiple>
 				<option value="Java Core">Java Core</option>
 				<option value="Spring Core">Spring Core</option>
@@ -32,26 +35,26 @@
 		</td>
 	</tr>
 	<tr>
-		<td>Student's Address:</td>
+		<td><spring:message code="label.studentAddress"/></td>
 	</tr>
 	<tr>
-		<td>Street:</td>
+		<td><spring:message code="label.street"/></td>
 		<td><input type="text" name="studentAddress.street"></td>
 	</tr>
 	<tr>
-		<td>City:</td>
+		<td><spring:message code="label.city"/></td>
 		<td><input type="text" name="studentAddress.city"></td>
 	</tr>
 	<tr>
-		<td>Pincode:</td>
+		<td><spring:message code="label.pincode"/></td>
 		<td><input type="text" name="studentAddress.pincode"></td>
 	</tr>
 	<tr>
-		<td>Country:</td>
+		<td><spring:message code="label.country"/></td>
 		<td><input type="text" name="studentAddress.country"></td>
 	</tr>
 </table>
-<input type="submit">
+<input type="submit" value="Submit Form">
 </form>
 </body>
 </html>
