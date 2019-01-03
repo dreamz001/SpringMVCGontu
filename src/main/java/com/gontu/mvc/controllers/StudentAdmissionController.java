@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,7 +49,12 @@ public class StudentAdmissionController {
 		model1.addAttribute("headerMessage", "Best College of Engineering, India");
 	}
 	@RequestMapping(value="/submit-admission-form", method = RequestMethod.POST)
-	public ModelAndView submitAdmissionForm(@ModelAttribute("studentObj")Student stud ) {
+	public ModelAndView submitAdmissionForm(@ModelAttribute("studentObj")Student stud, BindingResult result ) {
+		
+		if(result.hasErrors()) {
+			ModelAndView mv_errors=new ModelAndView("admission-form");
+			return mv_errors;
+		}
 		ModelAndView mv=new ModelAndView("admission-success");
 		//mv.addObject("headerMessage", "Best College of Engineering, India");
 		return mv;

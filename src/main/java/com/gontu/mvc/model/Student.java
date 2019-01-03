@@ -12,6 +12,8 @@ public class Student {
 	private Date studentDOB;
 	private ArrayList<String> studentSkills;
 	
+	private Address studentAddress;
+	
 	public Student() {
 		super();
 	}
@@ -59,6 +61,12 @@ public class Student {
 	}
 	public void setStudentSkills(ArrayList<String> studentSkills) {
 		this.studentSkills = studentSkills;
+	}
+	public Address getStudentAddress() {
+		return studentAddress;
+	}
+	public void setStudentAddress(Address studentAddress) {
+		this.studentAddress = studentAddress;
 	}
 	
 	
