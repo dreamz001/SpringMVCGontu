@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.annotation.WebInitParam;
+import javax.validation.Valid;
 
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -63,7 +64,7 @@ public class StudentAdmissionController {
 		model1.addAttribute("headerMessage", "Best College of Engineering, India");
 	}
 	@RequestMapping(value="/submit-admission-form", method = RequestMethod.POST)
-	public ModelAndView submitAdmissionForm(@ModelAttribute("studentObj")Student stud, BindingResult result ) {
+	public ModelAndView submitAdmissionForm(@Valid @ModelAttribute("studentObj")Student stud, BindingResult result ) {
 		
 		if(result.hasErrors()) {
 			ModelAndView mv_errors=new ModelAndView("admission-form");
