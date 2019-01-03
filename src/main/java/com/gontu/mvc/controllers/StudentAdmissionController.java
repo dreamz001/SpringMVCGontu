@@ -2,10 +2,16 @@ package com.gontu.mvc.controllers;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
+import javax.servlet.annotation.WebInitParam;
+
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +30,12 @@ public class StudentAdmissionController {
 		return mv;
 	}
 	
+	@InitBinder
+	public void setInitBinder(WebDataBinder binder) {
+		binder.setDisallowedFields(new String[] {"studentMobile"});
+		SimpleDateFormat format= new SimpleDateFormat("yyyy****MM****dd");
+		binder.registerCustomEditor(Date.class, "studentDOB", new CustomDateEditor(format, false));
+	}
 	/*@RequestMapping(value="/submit-admission-form", method = RequestMethod.POST)
 	public ModelAndView submitAdmissionForm(@RequestParam("studentName") String name,
 			@RequestParam("studentHobby") String hobby,@RequestParam("studentMobile") String mobile,
