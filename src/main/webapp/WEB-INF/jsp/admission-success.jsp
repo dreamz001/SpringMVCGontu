@@ -5,13 +5,25 @@
 <h3>Details submitted by you:</h3>
 <table>
 	<tr>
-		<td>Student Name:</td>
+		<td>Student's Name:</td>
 		<td>${studentObj.studentName}</td>
 	</tr>
 	<tr>
-		<td>Student Hobby:</td>
+		<td>Student's Hobby:</td>
 		<td>${studentObj.studentHobby}</td>
 	</tr>	
+	<tr>
+		<td>Student's Mobile:</td>
+		<td>${studentObj.studentMobile}</td>
+	</tr>
+	<tr>
+		<td>Student's DOB:</td>
+		<td>${studentObj.studentDOB}</td>
+	</tr>
+	<tr>
+		<td>Student's Skill Set:</td>
+		<td>${studentObj.studentSkills}</td>
+	</tr>
 </table>
 </body>
 </html>
