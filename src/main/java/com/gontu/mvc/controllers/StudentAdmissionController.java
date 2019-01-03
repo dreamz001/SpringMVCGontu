@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gontu.mvc.editor.StudentNameEditor;
 import com.gontu.mvc.model.Student;
 
 @Controller
@@ -35,6 +36,7 @@ public class StudentAdmissionController {
 		binder.setDisallowedFields(new String[] {"studentMobile"});
 		SimpleDateFormat format= new SimpleDateFormat("yyyy****MM****dd");
 		binder.registerCustomEditor(Date.class, "studentDOB", new CustomDateEditor(format, false));
+		binder.registerCustomEditor(String.class, "studentName", new StudentNameEditor());
 	}
 	/*@RequestMapping(value="/submit-admission-form", method = RequestMethod.POST)
 	public ModelAndView submitAdmissionForm(@RequestParam("studentName") String name,
