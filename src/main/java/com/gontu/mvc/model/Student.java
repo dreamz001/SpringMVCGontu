@@ -3,15 +3,24 @@ package com.gontu.mvc.model;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class Student {
 
+	@Pattern(regexp="[^0-9]*")
 	private String studentName;
 	@Size(min=2, max=15)
 	private String studentHobby;
-	
+	//@Max(222)
+	@Min(111)
 	private Long studentMobile;
+	//@Past
+	@Future
 	private Date studentDOB;
 	private ArrayList<String> studentSkills;
 	
