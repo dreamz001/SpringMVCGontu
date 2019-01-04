@@ -24,5 +24,14 @@
        
        <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
        		<property name="basename" value="/WEB-INF/messages/studentMessages" />
+       		<property name="cacheSeconds" value="1"></property>
        </bean>
+       
+       <mvc:interceptors>
+       	<!-- <bean class="com.gontu.mvc.interceptor.DayOfWeekBasedAccessInterceptor" /> -->
+       	<mvc:interceptor>
+       		<mvc:mapping path="/admission-form"/>
+       		<bean class="com.gontu.mvc.interceptor.DayOfWeekBasedAccessInterceptor" />
+       	</mvc:interceptor>
+       </mvc:interceptors>
 </beans>
