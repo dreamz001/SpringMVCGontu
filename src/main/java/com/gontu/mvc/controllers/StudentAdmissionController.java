@@ -85,7 +85,7 @@ public class StudentAdmissionController {
 		return mv;
 	}
 	
-	@ExceptionHandler(value = NullPointerException.class)
+	/*@ExceptionHandler(value = NullPointerException.class)
 	public ModelAndView handleNullPointrException(Exception e) {
 		ModelAndView mv=new ModelAndView("GenericException");
 		mv.addObject("exceptionType", "NullPointerException");
@@ -107,5 +107,5 @@ public class StudentAdmissionController {
 		mv.addObject("exceptionType", e.getMessage());
 		System.out.println("Exception occurred:"+e);
 		return mv;
-	}
+	}*/
 }
