@@ -10,8 +10,15 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonIgnoreProperties({"studentSkills"})
+@JsonPropertyOrder({"studentDOB","studentMobile","studentAddress","studentHobby","student_name"})
 public class Student {
 
+	@JsonProperty("student_name")
 	@Pattern(regexp="[^0-9]*")
 	private String studentName;
 	@Size(min=2, max=15)

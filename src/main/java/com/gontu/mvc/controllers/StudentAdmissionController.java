@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gontu.mvc.editor.StudentNameEditor;
@@ -108,4 +109,14 @@ public class StudentAdmissionController {
 		System.out.println("Exception occurred:"+e);
 		return mv;
 	}*/
+	@ResponseBody
+	@RequestMapping(value="/students", method = RequestMethod.GET)
+	public ArrayList<Student> getStudents() {
+		ArrayList<Student> studentList=new ArrayList<Student>();
+		studentList.add(new Student("The Great Khali", "WWE"));
+		studentList.add(new Student("The Undertaker", "WWE"));
+		studentList.add(new Student("John Cena", "WWE"));
+		return studentList;
+	}
+	
 }

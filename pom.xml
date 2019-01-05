@@ -18,7 +18,7 @@
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 <dependency>
     <groupId>org.springframework</groupId>
-    <artifactId>spring-webmvc</artifactId> 
+    <artifactId>spring-webmvc</artifactId>
     <version>4.3.9.RELEASE</version>
 </dependency>
 
@@ -55,6 +55,28 @@
     <groupId>com.fasterxml</groupId>
     <artifactId>classmate</artifactId>
     <version>1.1.0</version>
+</dependency>
+
+<!-- for JSON conversion jackson-annotations, jackson-core, jackson-databind-->
+<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-annotations</artifactId>
+    <version>2.9.0</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-core</artifactId>
+    <version>2.9.0</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.9.0</version>
 </dependency>
 
   </dependencies>
