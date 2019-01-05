@@ -24,9 +24,14 @@
        
        <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
        		<property name="basename" value="/WEB-INF/messages/studentMessages" />
+       		<!-- Optional part -setting properties file to be reloaded every 1 second, should not be in production -->
        		<property name="cacheSeconds" value="1"></property>
        </bean>
        
+       <bean id = "themeSource" class="org.springframework.ui.context.support.ResourceBundleThemeSource">
+       	<property name="basenamePrefix" value="theme-"/>
+       </bean>
+       <mvc:resources location="/WEB-INF/" mapping="/resources/**"></mvc:resources>
        <mvc:interceptors>
        	<!-- <bean class="com.gontu.mvc.interceptor.DayOfWeekBasedAccessInterceptor" /> -->
        	<mvc:interceptor>
@@ -36,11 +41,23 @@
        	<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
        		<property name="paramName" value="siteLanguage"></property>
        	</bean>
+       	
+       	<bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor">
+       		<property name="paramName" value="siteTheme" />
+       	</bean>
        </mvc:interceptors>
        
-       <bean name = "localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" >
+       <bean id = "localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" >
        		<property name="defaultLocale" value="fr" />
+       		<!-- Optional part -setting localeCookie -->
        		<property name="cookieName" value="localeCookie" />
        		<property name="cookieMaxAge" value="3600"></property>
+       </bean>
+       
+       <bean id = "themeResolver" class="org.springframework.web.servlet.theme.CookieThemeResolver">
+       	<property name="defaultThemeName" value="green" />
+       	<!-- Optional part -setting themeCookie -->
+       	<property name="cookieName" value="themeCookie" />
+       	<property name="cookieMaxAge" value="3600" />
        </bean>
 </beans>

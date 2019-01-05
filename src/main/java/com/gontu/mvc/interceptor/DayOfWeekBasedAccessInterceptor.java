@@ -16,7 +16,7 @@ public class DayOfWeekBasedAccessInterceptor extends HandlerInterceptorAdapter{
 		Calendar cal=Calendar.getInstance();
 		int dayOfWeek = cal.get(cal.DAY_OF_WEEK);
 		System.out.println("day of week................."+dayOfWeek);
-		if( dayOfWeek== 1 || dayOfWeek == 7) {// 1 means sunday, 7 means saturday
+		if( dayOfWeek== 3 || dayOfWeek == 4) {// 1 means sunday, 7 means saturday
 			String resp="The website is closed on weekends, please try accessing it on weekdays.";
 			response.getWriter().write(resp);
 			return false;
@@ -27,12 +27,14 @@ public class DayOfWeekBasedAccessInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
+		// this method will be called after the request has been processed(before creating html or view file)
 		System.out.println("Spring MVC postHandle method called : "+request.getRequestURI().toString());
 	}
 	
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
+		// this method will be called after creating the response(html or view file)
 		System.out.println("Spring MVC afterCompletion method called : "+request.getRequestURI().toString());
 	}
 }

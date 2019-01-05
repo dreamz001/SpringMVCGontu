@@ -1,7 +1,13 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
+<head>
+	<link rel="styleSheet" type="text/css" href="<spring:theme code='styleSheet'/>"/>
+</head>
 <body>
+<a href="admission-form?siteTheme=red" >Red</a> | 
+<a href="admission-form?siteTheme=green" >Green</a>
+<br/>
 <a href="admission-form?siteLanguage=en" >English</a> | 
 <a href="admission-form?siteLanguage=fr" >French</a>
 <h3>${headerMessage}</h3>
@@ -54,7 +60,7 @@
 		<td><input type="text" name="studentAddress.country"></td>
 	</tr>
 </table>
-<input type="submit" value="Submit Form">
+<input type="submit" value="<spring:message code='label.submit'/>">
 </form>
 </body>
 </html>
