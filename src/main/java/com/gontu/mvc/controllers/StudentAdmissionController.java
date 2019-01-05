@@ -1,5 +1,6 @@
 package com.gontu.mvc.controllers;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -64,14 +66,46 @@ public class StudentAdmissionController {
 		model1.addAttribute("headerMessage", "Best College of Engineering, India");
 	}
 	@RequestMapping(value="/submit-admission-form", method = RequestMethod.POST)
-	public ModelAndView submitAdmissionForm(@Valid @ModelAttribute("studentObj")Student stud, BindingResult result ) {
-		
+	public ModelAndView submitAdmissionForm(@Valid @ModelAttribute("studentObj")Student stud, BindingResult result )throws Exception {
+		if(stud.getStudentAddress().getStreet().toLowerCase().contains("exception")) {
+			if(stud.getStudentAddress().getStreet().toLowerCase().contains("nullpointer")) {
+				throw new NullPointerException();
+			}else if(stud.getStudentAddress().getStreet().toLowerCase().contains("ioexception")) {
+				throw new IOException();
+			}else {
+				throw new Exception(stud.getStudentAddress().getStreet());
+			}
+		}
 		if(result.hasErrors()) {
 			ModelAndView mv_errors=new ModelAndView("admission-form");
 			return mv_errors;
 		}
 		ModelAndView mv=new ModelAndView("admission-success");
 		//mv.addObject("headerMessage", "Best College of Engineering, India");
+		return mv;
+	}
+	
+	@ExceptionHandler(value = NullPointerException.class)
+	public ModelAndView handleNullPointrException(Exception e) {
+		ModelAndView mv=new ModelAndView("GenericException");
+		mv.addObject("exceptionType", "NullPointerException");
+		System.out.println("NullPointerException occurred:"+e);
+		return mv;
+	}
+	
+	@ExceptionHandler(value = IOException.class)
+	public ModelAndView handleIOException(Exception e) {
+		ModelAndView mv=new ModelAndView("GenericException");
+		mv.addObject("exceptionType", "IOException");
+		System.out.println("IOException occurred:"+e);
+		return mv;
+	}
+	
+	@ExceptionHandler(value = Exception.class)
+	public ModelAndView handleException(Exception e) {
+		ModelAndView mv=new ModelAndView("GenericException");
+		mv.addObject("exceptionType", e.getMessage());
+		System.out.println("Exception occurred:"+e);
 		return mv;
 	}
 }

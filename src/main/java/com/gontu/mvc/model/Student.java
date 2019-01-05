@@ -16,8 +16,8 @@ public class Student {
 	private String studentName;
 	@Size(min=2, max=15)
 	private String studentHobby;
-	//@Max(222)
-	@Min(111)
+	@Max(222)
+	//@Min(111)
 	private Long studentMobile;
 	//@Past
 	@Future

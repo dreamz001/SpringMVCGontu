@@ -28,7 +28,7 @@ public class DayOfWeekBasedAccessInterceptor extends HandlerInterceptorAdapter{
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		// this method will be called after the request has been processed(before creating html or view file)
-		System.out.println("Spring MVC postHandle method called : "+request.getRequestURI().toString());
+		System.out.println("Spring MVC postHandle method has been called : "+request.getRequestURI().toString());
 	}
 	
 	@Override
