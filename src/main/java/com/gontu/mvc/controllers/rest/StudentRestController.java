@@ -2,6 +2,7 @@ package com.gontu.mvc.controllers.rest;
 
 import java.util.ArrayList;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,7 +14,7 @@ import com.gontu.mvc.model.Student;
 @RequestMapping("/rest")
 public class StudentRestController {
 
-	@RequestMapping(value="/students", method = RequestMethod.GET)
+	@RequestMapping(value="/students", method = RequestMethod.GET, produces = MediaType.APPLICATION_XML_VALUE)
 	public ArrayList<Student> getStudents() {
 		ArrayList<Student> studentList=getStudentList();
 		return studentList;
