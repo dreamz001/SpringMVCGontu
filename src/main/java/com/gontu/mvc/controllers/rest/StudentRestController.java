@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +32,24 @@ public class StudentRestController {
 		return null;
 	}
 	
+	@RequestMapping(value="/students/{name}", method = RequestMethod.PUT)
+	public Boolean updateStudentDetails(@PathVariable("name")String studentName, @RequestBody Student student) {
+		ArrayList<Student> studentList=getStudentList();
+		Student stud=null;
+		for(Student studentObj:studentList) {
+			if(studentName.equalsIgnoreCase(studentObj.getStudentName())) {
+				stud = studentObj;
+				break;
+			}
+		}
+		if(stud != null) {
+			System.out.println("old values are::"+stud.getStudentName()+", studentHobby::"+stud.getStudentHobby());
+		}
+		
+		System.out.println("value of Student_Name:"+studentName);
+		System.out.println("updated values are::"+student.getStudentName()+", studentHobby::"+student.getStudentHobby());
+		return true;
+	}
 	private ArrayList<Student> getStudentList() {
 		ArrayList<Student> studentList=new ArrayList<Student>();
 		studentList.add(new Student("The Great Khali", "WWE"));
